@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $.getScript('random_article.js');
+                $.getScript('API_query.js');
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row text-center">
+                <h2>Wikipedia Viewer</h2>
+            </div>
+            <div class="row text-center">
+                <div class="col-xs-12">
+                    <button id="random_article" class="btn btn-primary">
+                        Random Article
+                    </button>
+                </div>
+                <div class="col-xs-12">
+                    <input id="searchText" type="text" placeholder="Search term...">
+                    <i id="searchButton" class="btn btn-primary fa fa-search" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div id="articlesFound" class="row text-center well">
+                <!-- Different articles found -->
+                <div class="col-xs-12">
+                    One article here
+                </div>
+                <div class="col-xs-12">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
