@@ -4,7 +4,7 @@ $("#searchButton").on("click", function () {
     var text = $("#searchText").val();
 
     var theUrl =
-        'https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=&explaintext&format=json&gsrlimit=20&generator=search&origin=*&gsrsearch='
+        'https://en.wikipedia.org/w/api.php?action=query&format=json&gsrlimit=20&generator=search&origin=*&gsrsearch='
         + text ;
 
     // Send the GET request (CORS)
@@ -31,18 +31,25 @@ $("#searchButton").on("click", function () {
 
     // Build the html from the pages received
     function buildHTML(pages){
-        console.log(pages);
-
-        for (page in pages) {
-            alert(page.pageid); // TODO : How to not get "undefined"?
+        var html = "";
+        
+        for (var page in pages) {
+            
+            var title = '';
+            var link = "http://en.wikipedia.org/?curid=";
+            
+            if (pages.hasOwnProperty(page)) {
+                title = pages[page].title;
+                link += pages[page].pageid;
+            }
+            
+            html +=
+                '<div class="col-xs-12">' +
+                    '<a href="' + link + '">' + title + '</a>' +
+                '</div>';
         }
 
-        // Get the link (use the pageid)
-        // Get the title
-        // Check if the extract exists, and if so, add it
-        // html += '<div class="col-xs-12">' + data[part] + '</div>';
-
-        return "A page was found";
+        return html;
     }
 
 
